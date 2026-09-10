@@ -51,7 +51,19 @@ You can try a clearly labeled synthetic demo first. The download never includes 
 
 Data on a Mac lives at `~/Library/Application Support/Kief Skool/`. Uploaded files are copied locally, with a hash and import timestamp. Automatic text extraction is optional; importing a syllabus does not invent or confirm deadlines. A PDF stays available even if text extraction is unavailable.
 
-The core planner works offline while its local service is running. Optional tutoring uses a separately installed/authenticated Codex CLI and sends relevant excerpts and questions to the model provider when you request help. You do not need it to use the planner.
+The core planner works offline while its local service is running. Optional tutoring sends relevant excerpts and questions to the selected model provider only when you request help. You do not need it to use the planner.
+
+## Connect a tutor
+
+Open **Tutor connections** in the sidebar, or the settings button inside a course tutor.
+
+1. Choose **ChatGPT via Codex** to reuse your existing local ChatGPT login. If needed, install the official Codex CLI and use **Sign in with ChatGPT**. The default is GPT-5.6 Terra with medium reasoning, subject to your account's model access and usage limits.
+2. Alternatively, choose **OpenAI API**, **Anthropic**, or **Gemini**, enter your API key and model ID, and save. The form links to each provider's key dashboard. These routes do not require Codex; API billing is separate from consumer subscriptions.
+3. For another compatible service or local model, choose **Custom endpoint**, enter its API base URL and model, and add a key if required. This supports OpenAI-compatible Chat Completions servers, not arbitrary API formats. Model/image/reasoning support depends on the server.
+
+**Test connection** sends only a tiny synthetic greeting, never your classes or files. It can consume account usage. Before chatting, review the destination and consent to sharing the displayed context. Changing connections requires consent again.
+
+OAuth tokens stay managed by Codex. Saved API keys live in an owner-restricted local `tutor-settings.json` file, are not application-encrypted, and are excluded from **in-app backup exports**. A manual full-folder backup includes them. Keys are not stored in browser storage or returned by the settings API. Do not share your personal data directory or keys with friends.
 
 Use **Export backup** in the app, or stop the app and back up the entire data directory. Keep backups private. Uninstalling the program preserves student data. The app is a single-user local service; do not expose its port to an untrusted network.
 

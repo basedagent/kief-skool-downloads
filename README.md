@@ -51,6 +51,8 @@ You can try a clearly labeled synthetic demo first. The download never includes 
 
 Data on a Mac lives at `~/Library/Application Support/Kief Skool/`. Uploaded files are copied locally, with a hash and import timestamp. Automatic text extraction is optional; importing a syllabus does not invent or confirm deadlines. A PDF stays available even if text extraction is unavailable.
 
+Version 0.4 includes built-in PDF text extraction, page previews, offline English OCR for scans/photos, and DOCX/PPTX text and embedded-image processing. Use **Reprocess text** for an older unreadable upload. Processing warnings identify unsupported content and incomplete coverage; no system PDF utility is required. See [supported formats and limits](docs/DOCUMENTS.md).
+
 The core planner works offline while its local service is running. Optional tutoring sends relevant excerpts and questions to the selected model provider only when you request help. You do not need it to use the planner.
 
 ## Connect a tutor
@@ -63,9 +65,15 @@ Open **Tutor connections** in the sidebar, or the settings button inside a cours
 
 **Test connection** sends only a tiny synthetic greeting, never your classes or files. It can consume account usage. Before chatting, review the destination and consent to sharing the displayed context. Changing connections requires consent again.
 
-OAuth tokens stay managed by Codex. Saved API keys live in an owner-restricted local `tutor-settings.json` file, are not application-encrypted, and are excluded from **in-app backup exports**. A manual full-folder backup includes them. Keys are not stored in browser storage or returned by the settings API. Do not share your personal data directory or keys with friends.
+**Review entire document** works through all extracted text and enabled page images in bounded batches. Large reviews can take minutes and use multiple model requests. Turn off images for a text-only model, ask about a single page for a focused answer, or use **Stop review** to cancel.
+
+ChatGPT OAuth tokens stay managed by Codex. Saved API keys live in an owner-restricted local `tutor-settings.json` file, are not application-encrypted, and are excluded from **in-app backup exports**. Optional Google credentials live separately in `google-docs-private.json` and are also excluded. A manual full-folder backup includes them. Keys are not stored in browser storage or returned by the settings API. Do not share your personal data directory or keys with friends.
 
 Use **Export backup** in the app, or stop the app and back up the entire data directory. Keep backups private. Uninstalling the program preserves student data. The app is a single-user local service; do not expose its port to an untrusted network.
+
+## Google Docs notes
+
+Each class's **Notes** section can link selected Google Docs and refresh their local text copies without replacing notes you typed in the app. This is optional, read-only Drive access, not Gmail inbox access. A one-time Google Cloud **Desktop app OAuth client** is required; there is no bundled shared Google login. Enable both the Drive and Docs APIs, then follow the [Google Docs setup guide](docs/GOOGLE_DOCS.md).
 
 ## Useful commands
 

@@ -3,10 +3,10 @@
 # Requires Node >=22.12 and npm, but no GitHub account or gh for students.
 # Install the generic versioned release:
 # curl -fsSL https://raw.githubusercontent.com/basedagent/kief-skool-downloads/main/install.sh | /bin/bash
-# The immutable bootstrap alternative uses the public v0.3.0 tag instead of main.
+# The immutable bootstrap alternative uses the public v0.4.0 tag instead of main.
 # To download manually:
-# gh release download v0.3.0 --repo basedagent/kief-skool-downloads --pattern 'kief-skool-0.3.0.tar.gz' --pattern SHA256SUMS
-# /bin/bash scripts/install.sh --version 0.3.0 --archive /absolute/kief-skool-0.3.0.tar.gz --checksums /absolute/SHA256SUMS
+# gh release download v0.4.0 --repo basedagent/kief-skool-downloads --pattern 'kief-skool-0.4.0.tar.gz' --pattern SHA256SUMS
+# /bin/bash scripts/install.sh --version 0.4.0 --archive /absolute/kief-skool-0.4.0.tar.gz --checksums /absolute/SHA256SUMS
 # Local overrides require BOTH files and the same checksum verification as releases.
 set -euo pipefail
 command -v node >/dev/null 2>&1 || { echo 'Install Node.js >=22.12 with npm from https://nodejs.org/en/download, then run this command again. Kief Skool does not require sudo.' >&2; exit 1; }
@@ -48,7 +48,7 @@ try {
     if (!['--version', '--archive', '--checksums'].includes(key) || opts[key] || !args[i + 1] || args[i + 1].startsWith('--')) fail(`Invalid installer option: ${key}`);
     opts[key] = args[++i];
   }
-  const version = opts['--version'] || '0.3.0';
+  const version = opts['--version'] || '0.4.0';
   if (!/^\d+\.\d+\.\d+$/.test(version)) fail('Version must be X.Y.Z.');
   if (Boolean(opts['--archive']) !== Boolean(opts['--checksums'])) fail('--archive and --checksums must be supplied together.');
   if (process.getuid?.() === 0) fail('Do not run the installer as root or with sudo.');
